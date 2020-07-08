@@ -17,11 +17,36 @@
     <PackageReference Include="WebDriver.ChromeDriver" Version="26.14.313457.1" />
     <PackageReference Include="WebDriverChromeDriver" Version="2.10.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="83.0.4103.3910" />
+    <PackageReference Include="SpecFlow.NUnit" Version="3.3.30" />
+    <PackageReference Include="SpecRun.SpecFlow" Version="3.3.17" />
+    <PackageReference Include="SpecFlow" Version="3.3.30" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.3.30" />
+    <PackageReference Include="SpecRun.Runner" Version="3.3.17" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Pages\" />
     <Folder Include="Helpers\" />
     <Folder Include="Tests\" />
+    <Folder Include="feature\" />
+    <Folder Include="BindingStep\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="feature\HRMTemplate.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>HRMTemplate.feature.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <SpecFlowFeatureFiles Update="feature\Template3.feature">
+      <Visible>False</Visible>
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Template3.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="feature\OrangeHRM.feature">
+      <Visible>False</Visible>
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>OrangeHRM.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
   </ItemGroup>
 </Project>

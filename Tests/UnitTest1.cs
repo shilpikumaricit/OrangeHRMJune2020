@@ -49,7 +49,7 @@ namespace OrangeHRMJune2020
         [Test]
         public void IT3_DeleteNValidate()
         {
-            Thread.Sleep(5000);
+            //Thread.Sleep(5000);
             var dashboardPage = new DashBoardPage();
             dashboardPage.ClickUsers(driver);
 

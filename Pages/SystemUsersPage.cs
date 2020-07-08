@@ -43,7 +43,7 @@ namespace OrangeHRMJune2020
 
         }
 
-        [Obsolete]
+        
         internal void VerifyUser()
         {
             // Implementing Explicit Wait
