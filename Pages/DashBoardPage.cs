@@ -22,5 +22,10 @@ namespace OrangeHRMJune2020
            driver.FindElement(By.Id("menu_admin_viewAdminModule")).Click();
 
         }
+
+        internal string goToDashboardPage(IWebDriver driver)
+        {
+           return driver.FindElement(By.XPath("1")).Text;
+        }
     }
 }

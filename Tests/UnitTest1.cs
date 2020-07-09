@@ -19,7 +19,7 @@ namespace OrangeHRMJune2020
             userName = "New" + rand.Next(0, 9999) + "user" + rand.Next(0, 9999);
             Console.WriteLine("Username : {0}", userName);
             var loginPage = new LoginPage(driver);
-            loginPage.LoginSuccess();
+            //loginPage.LoginSuccess();
         }
 
         

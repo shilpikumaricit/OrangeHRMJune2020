@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -30,7 +30,6 @@
     <Folder Include="Pages\" />
     <Folder Include="Helpers\" />
     <Folder Include="Tests\" />
-    <Folder Include="feature\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="feature\HRMTemplate.feature">

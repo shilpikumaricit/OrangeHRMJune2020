@@ -4,8 +4,21 @@
 	
 @mytag
 Scenario: Successful Login with Valid Credentials
-	Given User is at the Home Page
-	And Navigate to LogIn Page
+	Given Orange page url
 	When User enter <username> and <password>
 	And Click on the LogIn button
-	Then Successful LogIN message should display
+	Then Successful Login and Dashboard page should get displayed
+Examples: 
+	| username | password |
+	| Admin    | admin123 |
+
+@mytag
+Scenario: Un Successful Login with inValid Credentials
+	Given Orange page url
+	When User enter <username> and <password>
+	And Click on the LogIn button
+	Then Un Successful Login message should display
+Examples: 
+	| username | password |
+	| Abc	   | 12345    |
+   

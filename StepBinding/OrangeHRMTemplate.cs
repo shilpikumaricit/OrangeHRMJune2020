@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using TechTalk.SpecFlow;
@@ -12,47 +13,53 @@ namespace OrangeHRMJune2020.StepBinding
 
         IWebDriver driver = new ChromeDriver();
         string userName;
+        String orangeHrmUrl;
+        LoginPage loginPage;
 
-        [Given(@"User is at the Home Page")]
-        public void GivenUserIsAtTheHomePage()
+        [Given(@"Orange page url")]
+        public void GivenOrangePageUrl()
         {
-            var rand = new Random();
-            userName = "New" + rand.Next(0, 9999) + "user" + rand.Next(0, 9999);
-            Console.WriteLine("Username : {0}", userName);
-            var loginPage = new LoginPage(driver);
-            loginPage.LoginSuccess();
+            orangeHrmUrl = "https://opensource-demo.orangehrmlive.com/index.php/auth/login";
         }
-        
-        [Given(@"Navigate to LogIn Page")]
-        public void GivenNavigateToLogInPage()
-        {
-            ScenarioContext.Current.Pending();
-        }
-        
+
         [When(@"User enter (.*) and (.*)")]
-        public void WhenUserEnterAnd(string p0, string p1)
+        public void WhenUserEnterAnd(string username, string password)
         {
-            ScenarioContext.Current.Pending();
+            Console.WriteLine("username: {0}, and password: {1}", username, password);
+            loginPage = new LoginPage(driver);
+            loginPage.LoginSuccess(orangeHrmUrl, username, password);
+
         }
-        
+
         [When(@"Click on the LogIn button")]
         public void WhenClickOnTheLogInButton()
         {
-            ScenarioContext.Current.Pending();
+            Console.WriteLine("Login Button Click");
         }
-        
-        [Then(@"Successful LogIN message should display")]
-        public void ThenSuccessfulLogINMessageShouldDisplay()
-        {
-            var dashboardPage = new DashBoardPage();
-            dashboardPage.ClickUsers(driver);
 
-            var systemUsersPage = new SystemUsersPage(driver, userName);
-            systemUsersPage.ClickAdd();
-            systemUsersPage.AddAndSaveUser();
-            systemUsersPage.VerifyUser();
-            Thread.Sleep(10000);
-            driver.Quit();
+
+        [Then(@"Successful Login message should display")]
+        public void ThenSuccessfulLoginMessageShouldDisplay()
+        {
+            Console.WriteLine("Login successful.");
         }
+
+        [Then(@"Un Successful Login message should display")]
+        public void ThenUnSuccessfulLoginMessageShouldDisplay()
+        {
+            string expectedMessage = "Invalid credentials";
+            string actualErrorMessage = loginPage.verifyUnSuccessfulMessage();
+            Assert.AreEqual(expectedMessage, actualErrorMessage);
+        }
+
+        [Then(@"Successful Login and Dashboard page should get displayed")]
+        public void ThenSuccessfulLoginAndDashboardPageShouldGetDisplayed()
+        {
+            String expectedPage = "Dashboard";
+            DashBoardPage dashBoardPage = new DashBoardPage();
+            string actualPage = dashBoardPage.goToDashboardPage(driver);
+            Assert.AreEqual(expectedPage, actualPage);
+        }
+
     }
 }

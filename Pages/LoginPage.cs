@@ -15,16 +15,16 @@ namespace OrangeHRMJune2020
         IWebElement loginBtn => driver.FindElement(By.Id("btnLogin"));
 
 
-        public void LoginSuccess()
+        public void LoginSuccess(string url, string userName, string passWord)
         {
             //maximizing the window
             driver.Manage().Window.Maximize();
             //opening the url
-            driver.Navigate().GoToUrl("https://opensource-demo.orangehrmlive.com/index.php/auth/login");
+            driver.Navigate().GoToUrl(url);
 
             // login to system
-            username.SendKeys("Admin");
-            password.SendKeys("admin123");
+            username.SendKeys(userName);
+            password.SendKeys(passWord);
             loginBtn.Click();
         }
         public void LoginFailure()
@@ -37,6 +37,12 @@ namespace OrangeHRMJune2020
             username.SendKeys("erint");
             password.SendKeys("sdf");
             loginBtn.Click();
+        }
+
+        internal string verifyUnSuccessfulMessage()
+        {
+            IWebElement webElement = driver.FindElement(By.Id("spanMessage"));
+            return webElement.Text;
         }
     }
 }
