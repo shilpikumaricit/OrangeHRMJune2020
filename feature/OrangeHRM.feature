@@ -9,6 +9,3 @@ Scenario: Successful Login with Valid Credentials
 	When User enter <username> and <password>
 	And Click on the LogIn button
 	Then Successful LogIN message should display
-Examples:
-| username   | password |
-| Admin | Admin123 |
